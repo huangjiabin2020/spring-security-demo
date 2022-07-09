@@ -2,6 +2,7 @@ package com.binge.securitydemo.security.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.binge.securitydemo.security.token.UsernamePasswordToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,7 +42,7 @@ public class UsernamePasswordFilter extends AbstractAuthenticationProcessingFilt
         JSONObject postObject = JSON.parseObject(request.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
         String username = (String) postObject.get("username");
         String password = (String) postObject.get("password");
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+        UsernamePasswordToken usernamePasswordAuthenticationToken = new UsernamePasswordToken(username, password);
         log.error("UsernamePasswordFilter attemptAuthentication");
         return this.getAuthenticationManager().authenticate(usernamePasswordAuthenticationToken);
 

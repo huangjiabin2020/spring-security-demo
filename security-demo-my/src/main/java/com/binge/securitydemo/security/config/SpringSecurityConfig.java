@@ -140,12 +140,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(usernamePasswordFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(verifyCodeFilter(), UsernamePasswordAuthenticationFilter.class)
-//                .addFilter(usernamePasswordFilter())
-//                .addFilter(verifyCodeFilter())
-                //jwt的filter必须在登出的filter之前 不然登出filter在调用LogoutSuccessHandler的时候 里面的Authentication参数就是null了
-                //这个Authentication参数是jwt的filter校验完成jwt之后设置到SecurityContextHolder的
-//                .addFilterBefore(jwtAuthenticationTokenFilter(), BasicAuthenticationFilter.class)
-//                .addFilterAfter(jwtAuthenticationTokenFilter(), LogoutFilter.class)
                 // 配置未登录自定义处理类
 //                .and()
                 .httpBasic().authenticationEntryPoint(userAuthenticationEntryPointHandler)
@@ -155,8 +149,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginProcessingUrl("/login/userLogin")
                 .loginProcessingUrl("/login/codeLogin")
-
-
                 // 配置登录成功自定义处理类
 //                .successHandler(userLoginSuccessHandler)
                 // 配置登录失败自定义处理类

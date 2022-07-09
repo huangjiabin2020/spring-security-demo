@@ -7,6 +7,8 @@ import com.binge.securitydemo.crud.entity.SysRole;
 import com.binge.securitydemo.crud.entity.SysUser;
 import com.binge.securitydemo.crud.service.SysUserService;
 import com.binge.securitydemo.security.entity.SecuritySysUser;
+import com.binge.securitydemo.security.token.UsernamePasswordToken;
+import com.binge.securitydemo.security.token.VerifyCodeToken;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -84,16 +86,16 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             //参数1 用户信息实体类（实现 UserDetails接口）
             //参数2 密码
             //参数3 角色列表
-            return new UsernamePasswordAuthenticationToken(securitySysUser, password, authorities);
+            return new UsernamePasswordToken(securitySysUser, password, authorities);
         }
         //GrantedAuthority类型，该类型没有默认的无参构造函数，无法直接使用FastJson进行反序列化(都是调用无参构造函数创建对象 然后set方法赋值)
         SecuritySysUser securitySysUser = JSON.parseObject(o, new TypeReference<SecuritySysUser>(){});
-        return new UsernamePasswordAuthenticationToken(securitySysUser, password, securitySysUser.getAuthorities());
+        return new UsernamePasswordToken(securitySysUser, password, securitySysUser.getAuthorities());
 
     }
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return true;
+        return aClass.equals(UsernamePasswordToken.class);
     }
 }

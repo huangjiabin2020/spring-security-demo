@@ -66,6 +66,6 @@ public class VerifyCodeAuthenticationProvider implements AuthenticationProvider 
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return true;
+        return authentication.equals(VerifyCodeToken.class);
     }
 }
