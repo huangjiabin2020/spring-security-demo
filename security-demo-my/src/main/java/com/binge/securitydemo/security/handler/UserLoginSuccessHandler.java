@@ -35,7 +35,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
         // 封装返回参数
         Map<String, Object> resultData = new HashMap<>();
         resultData.put("code", "200");
-        resultData.put("msg", "登录成功");
+        resultData.put("message", "登录成功");
         resultData.put("token", token);
         ResponseUtil.responseJson(httpServletResponse, resultData);
     }

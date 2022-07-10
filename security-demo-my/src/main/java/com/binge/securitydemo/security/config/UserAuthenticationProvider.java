@@ -90,6 +90,15 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         }
         //GrantedAuthority类型，该类型没有默认的无参构造函数，无法直接使用FastJson进行反序列化(都是调用无参构造函数创建对象 然后set方法赋值)
         SecuritySysUser securitySysUser = JSON.parseObject(o, new TypeReference<SecuritySysUser>(){});
+        //就算缓存中有登录记录 再次登录 也得走密码校验
+        // 我们还要判断密码是否正确，这里我们的密码使用BCryptPasswordEncoder进行加密的
+        if (!bCryptPasswordEncoder.matches(password, securitySysUser.getPassword())) {
+            throw new BadCredentialsException("密码不正确");
+        }
+        // 还可以加一些其他信息的判断，比如用户账号已停用等判断
+        if (securitySysUser.getStatus().equals("PROHIBIT")) {
+            throw new LockedException("该用户已被冻结");
+        }
         return new UsernamePasswordToken(securitySysUser, password, securitySysUser.getAuthorities());
 
     }

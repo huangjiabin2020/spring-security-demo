@@ -35,7 +35,7 @@ public class UserLogoutSuccessHandler implements LogoutSuccessHandler {
         redisTemplate.delete(securitySysUser.getUsername());
         Map<String, Object> resultData = new HashMap<>();
         resultData.put("code", "200");
-        resultData.put("msg", "登出成功");
+        resultData.put("message", "登出成功");
         SecurityContextHolder.clearContext();
         ResponseUtil.responseJson(httpServletResponse, ResponseUtil.resultSuccess(resultData));
     }
