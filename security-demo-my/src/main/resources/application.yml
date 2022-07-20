@@ -1,5 +1,5 @@
 server:
-  port: 8764
+  port: 8765
   servlet:
     context-path: /api
 
@@ -9,11 +9,22 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sans_security?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
-    password: 123456
+    password:
     type: com.alibaba.druid.pool.DruidDataSource
   redis:
     host: localhost
     port: 6379
+  data:
+    mongodb:
+      authentication-database: admin
+      host: 121.4.125.71
+      port: 27017
+      username: admin
+#      解密用的jasypt 密码是我常用的一个字母+数字的密码
+#      当然启动项目需要秘钥信息 我就直接在idea的项目环境里面写上了 就不用担心提交到外网泄密了 具体格式为:
+      password: ENC(UlhOkEKKa7rBYFW56Ek7E9AQzIAgZRYVy2QDyG1QKyt29DTD6MVI9jXplfczn/QF)
+      database: db_student
+
 
 mybatis-plus:
   # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
@@ -24,3 +35,8 @@ mybatis-plus:
 
 security:
   permits: /index/**,/login/**,/favicon.ico
+
+# 这里本地测完绝对不要提交到线上
+#jasypt:
+#  encryptor:
+#    password:

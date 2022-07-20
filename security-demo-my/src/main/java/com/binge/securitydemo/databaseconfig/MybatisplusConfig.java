@@ -1,4 +1,4 @@
-package com.binge.securitydemo.mybatisplus;
+package com.binge.securitydemo.databaseconfig;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
