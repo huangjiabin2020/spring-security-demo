@@ -19,17 +19,16 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Data
-public class Student implements Serializable {
+public class Tiezi implements Serializable {
     @Id// 必须指定id列
-    private String studentId;
-
-    private String studentName;
-
-    private Integer studentAge;
-
-//    private Double studentScore;
-
-    private Date studentBirthday;
-
+    private String id;
+    private Integer userId;
+    /**
+     * 帖子所属板块
+     */
+    private Integer moduleId;
+    private String title;
+    private String content;
     private Date createTime;
+    private Date updateTime;
 }

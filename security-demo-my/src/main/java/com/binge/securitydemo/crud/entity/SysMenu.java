@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @TableName(value = "sys_menu")
 @Data
+@Accessors(chain = true)
 public class SysMenu implements Serializable {
     /**
      * ID
