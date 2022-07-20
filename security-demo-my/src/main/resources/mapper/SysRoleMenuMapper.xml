@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.binge.securitydemo.crud.mapper.SysRoleMenuMapper">
+<mapper namespace="com.binge.securitydemo.crud.mysql.mapper.SysRoleMenuMapper">
 
-    <resultMap id="BaseResultMap" type="com.binge.securitydemo.crud.entity.SysRoleMenu">
+    <resultMap id="BaseResultMap" type="com.binge.securitydemo.crud.mysql.entity.SysRoleMenu">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="BIGINT"/>
             <result property="menuId" column="menu_id" jdbcType="BIGINT"/>

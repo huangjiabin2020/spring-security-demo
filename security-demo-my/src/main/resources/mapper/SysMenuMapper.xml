@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.binge.securitydemo.crud.mapper.SysMenuMapper">
+<mapper namespace="com.binge.securitydemo.crud.mysql.mapper.SysMenuMapper">
 
-    <resultMap id="BaseResultMap" type="com.binge.securitydemo.crud.entity.SysMenu">
+    <resultMap id="BaseResultMap" type="com.binge.securitydemo.crud.mysql.entity.SysMenu">
         <id property="menuId" column="menu_id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="permission" column="permission" jdbcType="VARCHAR"/>
@@ -13,7 +13,7 @@
     <sql id="Base_Column_List">
         menu_id,name,permission
     </sql>
-    <select id="selectSysMenuByUserId" resultType="com.binge.securitydemo.crud.entity.SysMenu">
+    <select id="selectSysMenuByUserId" resultType="com.binge.securitydemo.crud.mysql.entity.SysMenu">
         select *
         from sys_menu sm
                  inner join sys_role_menu srm on sm.menu_id = srm.menu_id

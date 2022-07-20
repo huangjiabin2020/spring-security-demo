@@ -34,9 +34,9 @@ mybatis-plus:
 
 
 security:
-  permits: /index/**,/login/**,/favicon.ico
+  permits: /index/**,/login/**,/favicon.ico,/main/user/**
 
 # 这里本地测完绝对不要提交到线上
-#jasypt:
-#  encryptor:
-#    password:
+jasypt:
+  encryptor:
+    password: binge666

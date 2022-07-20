@@ -1,16 +1,10 @@
 package com.binge.securitydemo.crud.mongo.mapper;
 
-import com.binge.securitydemo.crud.entity.SysMenu;
-import com.binge.securitydemo.crud.mapper.SysMenuMapper;
 import com.binge.securitydemo.crud.mongo.entity.Student;
-import com.binge.securitydemo.crud.service.SysUserService;
-import com.binge.securitydemo.crud.service.impl.SysUserServiceImpl;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +14,7 @@ import java.util.List;
  * @author: HJB
  * @create: 2022-07-20 15:13
  **/
-//@SpringBootTest
+@SpringBootTest
 class StudentDaoTypeOneTest {
 
     @Autowired

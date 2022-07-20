@@ -1,9 +1,9 @@
 package com.binge.securitydemo.security.config;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.binge.securitydemo.crud.entity.SysRole;
-import com.binge.securitydemo.crud.entity.SysUser;
-import com.binge.securitydemo.crud.service.SysUserService;
+import com.binge.securitydemo.crud.mysql.entity.SysRole;
+import com.binge.securitydemo.crud.mysql.entity.SysUser;
+import com.binge.securitydemo.crud.mysql.service.SysUserService;
 import com.binge.securitydemo.security.entity.SecuritySysUser;
 import com.binge.securitydemo.security.token.VerifyCodeToken;
 import lombok.extern.slf4j.Slf4j;

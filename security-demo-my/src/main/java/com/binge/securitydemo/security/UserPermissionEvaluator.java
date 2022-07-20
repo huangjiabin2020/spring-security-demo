@@ -1,7 +1,7 @@
 package com.binge.securitydemo.security;
 
-import com.binge.securitydemo.crud.entity.SysMenu;
-import com.binge.securitydemo.crud.service.SysUserService;
+import com.binge.securitydemo.crud.mysql.entity.SysMenu;
+import com.binge.securitydemo.crud.mysql.service.SysUserService;
 import com.binge.securitydemo.security.entity.SecuritySysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
