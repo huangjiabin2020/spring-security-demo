@@ -34,7 +34,7 @@ mybatis-plus:
 
 
 security:
-  permits: /index/**,/login/**,/favicon.ico,/main/user/**
+  permits: /index/**,/login/**,/favicon.ico,/main/user/**,/tiezi/**
 
 # 这里本地测完绝对不要提交到线上
 #jasypt:
