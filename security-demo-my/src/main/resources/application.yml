@@ -1,7 +1,7 @@
 server:
   port: 8765
-  servlet:
-    context-path: /api
+#  servlet:
+#    context-path: /api
 
 spring:
   # 配置数据源
@@ -37,6 +37,6 @@ security:
   permits: /index/**,/login/**,/favicon.ico,/main/user/**
 
 # 这里本地测完绝对不要提交到线上
-jasypt:
-  encryptor:
-    password: binge666
+#jasypt:
+#  encryptor:
+#    password:
