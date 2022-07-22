@@ -1,7 +1,7 @@
 server:
   port: 8765
-#  servlet:
-#    context-path: /api
+  servlet:
+    context-path: /api
 
 spring:
   # 配置数据源
@@ -23,7 +23,7 @@ spring:
 #      解密用的jasypt 密码是我常用的一个字母+数字的密码
 #      当然启动项目需要秘钥信息 我就直接在idea的项目环境里面写上了 就不用担心提交到外网泄密了 具体格式为:
       password: ENC(UlhOkEKKa7rBYFW56Ek7E9AQzIAgZRYVy2QDyG1QKyt29DTD6MVI9jXplfczn/QF)
-      database: db_student
+      database: db_tiezi
 
 
 mybatis-plus:

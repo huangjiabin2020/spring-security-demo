@@ -17,4 +17,6 @@ public interface SysUserService extends IService<SysUser> {
     List<SysRole> selectSysRoleByUserId(Long userId);
 
     List<SysMenu> selectSysMenuByUserId(Long userId);
+
+    boolean checkUserExist(String username);
 }

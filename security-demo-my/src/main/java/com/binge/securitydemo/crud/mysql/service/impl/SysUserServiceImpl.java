@@ -1,14 +1,19 @@
 package com.binge.securitydemo.crud.mysql.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.binge.securitydemo.common.CommonConstant;
 import com.binge.securitydemo.crud.mysql.entity.SysMenu;
 import com.binge.securitydemo.crud.mysql.entity.SysRole;
 import com.binge.securitydemo.crud.mysql.entity.SysUser;
 import com.binge.securitydemo.crud.mysql.mapper.SysMenuMapper;
 import com.binge.securitydemo.crud.mysql.mapper.SysUserMapper;
 import com.binge.securitydemo.crud.mysql.service.SysUserService;
+import com.binge.securitydemo.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -20,7 +25,8 @@ import java.util.List;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         implements SysUserService {
-
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Autowired
     private SysUserMapper sysUserMapper;
 
@@ -37,6 +43,21 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
     public List<SysMenu> selectSysMenuByUserId(Long userId) {
 
         return sysMenuMapper.selectSysMenuByUserId(userId);
+    }
+
+    @Override
+    public boolean checkUserExist(String username) {
+        if (ObjectUtils.isEmpty(redisTemplate.opsForValue().get(CommonConstant.LOGIN + username))) {
+            try {
+                SysUser one = this.getOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUsername, username));
+                if (ObjectUtils.isEmpty(one)){
+                    return false;
+                }
+            } catch (Exception e) {
+                throw new MyException("getOne异常");
+            }
+        }
+        return true;
     }
 }
 

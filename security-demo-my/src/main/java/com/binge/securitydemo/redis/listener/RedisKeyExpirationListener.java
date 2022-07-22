@@ -49,7 +49,10 @@ public class RedisKeyExpirationListener extends KeyExpirationEventMessageListene
         }
     }
 
-    @Scheduled(cron = "0/3 * * * * ?")
+    /**
+     * 用来测试而已
+     */
+//    @Scheduled(cron = "0/3 * * * * ?")
     public void test(){
         log.info("添加redis缓存");
         redisTemplate.opsForValue().set("binge:"+UUID.randomUUID().toString(),1,3, TimeUnit.SECONDS);
